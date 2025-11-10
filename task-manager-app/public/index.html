@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager - Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1 class="auth-title">Task Manager</h1>
+
+      <!-- Tab Navigation -->
+      <div class="tab-container">
+        <button class="tab-btn active" data-tab="login">Login</button>
+        <button class="tab-btn" data-tab="register">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form active">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input
+            type="email"
+            id="loginEmail"
+            name="email"
+            placeholder="Enter your email"
+            required
+          >
+          <span class="error-message" id="loginEmailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <div class="password-input-wrapper">
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              placeholder="Enter your password"
+              required
+            >
+            <button type="button" class="toggle-password" data-target="loginPassword">
+              <span class="eye-icon">👁️</span>
+            </button>
+          </div>
+          <span class="error-message" id="loginPasswordError"></span>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" id="rememberMe">
+            <span>Remember me</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="loginBtn">
+          <span class="btn-text">Login</span>
+          <span class="btn-loader" style="display: none;"></span>
+        </button>
+
+        <p class="auth-hint">
+          Default credentials: <strong>admin@test.com / Admin@123</strong>
+        </p>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form">
+        <div class="form-group">
+          <label for="registerEmail">Email *</label>
+          <input
+            type="email"
+            id="registerEmail"
+            name="email"
+            placeholder="Enter your email"
+            required
+          >
+          <span class="error-message" id="registerEmailError"></span>
+          <span class="validation-message" id="registerEmailValidation"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="registerPassword">Password *</label>
+          <div class="password-input-wrapper">
+            <input
+              type="password"
+              id="registerPassword"
+              name="password"
+              placeholder="Create a password"
+              required
+            >
+            <button type="button" class="toggle-password" data-target="registerPassword">
+              <span class="eye-icon">👁️</span>
+            </button>
+          </div>
+          <span class="error-message" id="registerPasswordError"></span>
+
+          <!-- Password Strength Indicator -->
+          <div class="password-strength">
+            <div class="strength-bar">
+              <div class="strength-bar-fill" id="strengthBar"></div>
+            </div>
+            <span class="strength-text" id="strengthText">Password Strength</span>
+          </div>
+
+          <!-- Password Criteria Checklist -->
+          <div class="password-criteria">
+            <p class="criteria-title">Password must contain:</p>
+            <div class="criteria-item" id="criteriaLength">
+              <span class="criteria-icon">○</span>
+              <span>At least 8 characters</span>
+            </div>
+            <div class="criteria-item" id="criteriaUppercase">
+              <span class="criteria-icon">○</span>
+              <span>At least 1 uppercase letter</span>
+            </div>
+            <div class="criteria-item" id="criteriaLowercase">
+              <span class="criteria-icon">○</span>
+              <span>At least 1 lowercase letter</span>
+            </div>
+            <div class="criteria-item" id="criteriaNumber">
+              <span class="criteria-icon">○</span>
+              <span>At least 1 number</span>
+            </div>
+            <div class="criteria-item" id="criteriaSpecial">
+              <span class="criteria-icon">○</span>
+              <span>At least 1 special character (@$!%*?&)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="registerRole">Role *</label>
+          <select id="registerRole" name="role" required>
+            <option value="">Select a role</option>
+            <option value="Admin">Admin</option>
+            <option value="User" selected>User</option>
+            <option value="Guest">Guest</option>
+          </select>
+          <span class="error-message" id="registerRoleError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="profilePicture">Profile Picture (Optional)</label>
+          <input
+            type="file"
+            id="profilePicture"
+            name="profilePicture"
+            accept="image/*"
+          >
+          <span class="file-info">Max size: 2MB. Formats: JPG, PNG, GIF</span>
+          <span class="error-message" id="profilePictureError"></span>
+          <div class="image-preview" id="imagePreview"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="registerBtn">
+          <span class="btn-text">Register</span>
+          <span class="btn-loader" style="display: none;"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="auth.js"></script>
+</body>
+</html>
