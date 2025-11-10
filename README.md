@@ -9,9 +9,18 @@ A simple task manager application with automated Cypress tests and beautiful All
 This project has **two folders**:
 
 1. **task-manager-app** - Simple task manager app (no tests)
-2. **task-manager-cypress-demo** - Same app + Cypress tests + Allure reports
+2. **WorkshopThings** - Tools needed to ease our job
 
 ---
+## Slide 
+<p align="left">
+  <!-- Slides / Presentation -->
+  <a href="https://www.canva.com/design/DAG379H2T-c/_r8j18UBjgRM3KyqiNentw/edit?utm_content=DAG379H2T-c&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">
+    <img src="https://img.shields.io/badge/Canva%20Slides-00C4CC?style=for-the-badge&logo=Canva&logoColor=white" alt="Canva Slides"/>
+  </a>
+</p>
+
+
 
 ## 🛠️ Tech Stack
 
@@ -210,19 +219,4 @@ npx allure serve allure-results
 4. View the report!
 
 ---
-
-## 📝 Features
-
-✅ Login & Registration
-✅ Create, Edit, Delete Tasks
-✅ Search & Filter Tasks
-✅ Dark/Light Theme
-✅ Task Priorities
-✅ Due Date Tracking
-✅ Bulk Actions
-✅ 100+ Automated Tests
-✅ Beautiful Reports
-
----
-
-**Happy Testing! 🚀**
+**Happy Testing! 🚀 Created By Hafeez Ilias**
