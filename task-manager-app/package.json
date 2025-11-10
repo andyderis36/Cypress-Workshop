@@ -5,7 +5,11 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "dev": "node server/server.js"
+    "dev": "node server/server.js",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "clean": "node -e \"const fs=require('fs'); ['allure-results','allure-report','cypress/screenshots','cypress/videos'].forEach(d=>{try{fs.rmSync(d,{recursive:true,force:true})}catch(e){}})\"",
+    "test:login": "npm run clean && cypress run --spec \"cypress/e2e/01-login.cy.js\" --browser chrome && npx allure generate allure-results --clean -o allure-report && npx allure open allure-report"
   },
   "keywords": [
     "task-manager",
@@ -17,5 +21,9 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2"
-  }
+  },
+  "devDependencies": {
+    "cypress": "^15.6.0"
+  },
+  "type": "commonjs"
 }
