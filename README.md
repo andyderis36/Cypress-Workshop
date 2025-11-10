@@ -1,6 +1,6 @@
-# 🚀 Cypress & Allure Testing Demo - Task Manager App
+# 🚀 Cypress Testing Workshop - Task Manager App
 
-A simple task manager application with automated Cypress tests and beautiful Allure reports.
+A comprehensive task manager application with automated Cypress end-to-end tests for learning and demonstration purposes.
 
 ---
 
@@ -8,8 +8,8 @@ A simple task manager application with automated Cypress tests and beautiful All
 
 This project has **two folders**:
 
-1. **task-manager-app** - Simple task manager app (no tests)
-2. **WorkshopThings** - Tools needed to ease our job
+1. **task-manager-app** - Task manager application with Cypress tests configured
+2. **WorkshopThings** - Configuration templates and workshop materials
 
 ---
 ## Slide 
@@ -34,7 +34,6 @@ This project has **two folders**:
 
 <p align="left">
   <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" alt="Cypress"/>
-  <img src="https://img.shields.io/badge/Allure-FF6C37?style=for-the-badge&logo=qameta&logoColor=white" alt="Allure"/>
 </p>
 
 ---
@@ -76,7 +75,7 @@ Use these credentials:
 
 ---
 
-## 📦 Install Cypress & Allure
+## 📦 Installation
 
 ### Step 1: Install Node.js
 
@@ -86,96 +85,112 @@ Use these credentials:
   </a>
 </p>
 
-Download and install Node.js from the official website.
+Download and install Node.js (v14 or higher) from the official website.
 
-### Step 2: Install Java (for Allure)
+### Step 2: Install Dependencies
 
-<p align="left">
-  <a href="https://www.oracle.com/java/technologies/downloads/" target="_blank">
-    <img src="https://img.shields.io/badge/Download%20Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Download Java"/>
-  </a>
-</p>
-
-Download and install Java 8 or higher.
-
-### Step 3: Install Cypress
-
-<p align="left">
-  <a href="https://docs.cypress.io/app/get-started/install-cypress" target="_blank">
-    <img src="https://img.shields.io/badge/Cypress%20Docs-17202C?style=for-the-badge&logo=cypress&logoColor=white" alt="Cypress Documentation"/>
-  </a>
-</p>
+Navigate to the project folder and install all dependencies:
 
 ```bash
-cd task-manager-cypress-demo
+cd task-manager-app
 npm install
 ```
 
-This installs Cypress automatically!
+This will automatically install:
+- Express.js (for the server)
+- Cypress (for testing)
 
-### Step 4: Install Allure
+### Step 3: Verify Installation
 
-<p align="left">
-  <a href="https://allurereport.org/docs/install/" target="_blank">
-    <img src="https://img.shields.io/badge/Allure%20Docs-FF6C37?style=for-the-badge&logo=qameta&logoColor=white" alt="Allure Documentation"/>
-  </a>
-</p>
+Check if Cypress is installed correctly:
 
-**Windows:**
 ```bash
-scoop install allure
-```
-
-**Mac:**
-```bash
-brew install allure
-```
-
-**Linux:**
-```bash
-sudo apt-get install allure
+npx cypress --version
 ```
 
 ---
 
 ## 🧪 Run Tests
 
-### Start the App First
+### Step 1: Start the Application Server
+
+First, start the task manager application:
 
 ```bash
-cd task-manager-cypress-demo
+cd task-manager-app
 npm start
 ```
 
-### Run Tests (New Terminal)
+The server will run at **http://localhost:3000**
 
-**Open Cypress (Interactive):**
+### Step 2: Run Cypress Tests (Open New Terminal)
+
+**Option A: Open Cypress Interactive Mode (Recommended for Development)**
 ```bash
 npm run cypress:open
 ```
+This opens the Cypress Test Runner where you can:
+- Select and run individual test files
+- Watch tests run in real-time in a browser
+- Debug tests easily
 
-**Run All Tests:**
+**Option B: Run Tests in Headless Mode (for CI/CD)**
 ```bash
 npm run cypress:run
 ```
+This runs all tests in the terminal without opening a browser UI.
 
-**Run Tests + Generate Report:**
+**Option C: Run Specific Test Files**
 ```bash
-npm run test:login
+npx cypress run --spec "cypress/e2e/task-manager.cy.js"
 ```
 
 ---
 
-## 📊 View Allure Reports
+## 📊 Test Results
 
-After running tests, the report opens automatically!
+### View Test Results in Cypress
 
-Or manually open it:
-```bash
-npx allure serve allure-results
-```
+- **Screenshots**: Automatically captured on test failures in `cypress/screenshots/`
+- **Videos**: Recorded test runs available in `cypress/videos/`
+- **Console Output**: Real-time test results in the terminal
+
+### Cypress Dashboard (Optional)
+
+You can view test results in the browser while running in interactive mode with `npm run cypress:open`.
 
 ---
+
+## � Project Structure
+
+```
+task-manager-app/
+├── cypress/
+│   ├── e2e/
+│   │   └── task-manager.cy.js    # Test specifications
+│   ├── fixtures/                  # Test data
+│   ├── support/
+│   │   ├── commands.js            # Custom Cypress commands
+│   │   └── e2e.js                 # Test configuration
+├── public/
+│   ├── index.html                 # Login page
+│   ├── dashboard.html             # Task dashboard
+│   ├── app.js                     # Frontend logic
+│   ├── auth.js                    # Authentication logic
+│   └── styles.css                 # Styling
+├── server/
+│   └── server.js                  # Express backend
+├── cypress.config.js              # Cypress configuration
+├── package.json                   # Dependencies and scripts
+└── .gitignore                     # Git ignore rules
+```
+
+## 🧪 Available Tests
+
+Current test suite (`cypress/e2e/task-manager.cy.js`):
+
+1. **Should load the login page** - Verifies the login page loads correctly
+2. **Should allow login** - Tests user authentication with credentials
 
 ## 📚 Official Documentation
 
@@ -190,33 +205,49 @@ npx allure serve allure-results
   </a>
 </p>
 
-### Allure
-
-<p align="left">
-  <a href="https://allurereport.org/" target="_blank">
-    <img src="https://img.shields.io/badge/Allure%20Website-FF6C37?style=for-the-badge&logo=qameta&logoColor=white" alt="Allure Website"/>
-  </a>
-  <a href="https://allurereport.org/docs/" target="_blank">
-    <img src="https://img.shields.io/badge/Allure%20Docs-FF6C37?style=for-the-badge&logo=qameta&logoColor=white" alt="Allure Docs"/>
-  </a>
-</p>
-
 ---
 
-## 🎉 Quick Start
+## 🎉 Quick Start Guide
 
-1. Install Node.js & Java
+### For Using the Application:
+1. Install Node.js
 2. `cd task-manager-app`
 3. `npm install`
 4. `npm start`
 5. Open http://localhost:3000
 6. Login with `admin@test.com` / `Admin@123`
 
-**For Testing:**
-1. `cd task-manager-cypress-demo`
-2. `npm install`
-3. `npm run test:login`
-4. View the report!
+### For Running Tests:
+1. Make sure the app is running (`npm start`)
+2. Open a new terminal
+3. `cd task-manager-app`
+4. `npm run cypress:open`
+5. Select `task-manager.cy.js` and watch tests run!
+
+## 🔧 NPM Scripts
+
+Available commands in `package.json`:
+
+- `npm start` - Start the Express server
+- `npm run dev` - Start server in development mode
+- `npm run cypress:open` - Open Cypress Test Runner (interactive)
+- `npm run cypress:run` - Run tests in headless mode
+- `npm run clean` - Clean test artifacts (screenshots, videos, reports)
+
+## 🐛 Troubleshooting
+
+**Server not starting?**
+- Make sure port 3000 is not in use
+- Check if Node.js is installed: `node --version`
+
+**Cypress tests failing?**
+- Ensure the server is running at http://localhost:3000
+- Check `cypress.config.js` has correct `baseUrl`
+- Clear browser cache and restart Cypress
+
+**Can't find elements in tests?**
+- Verify element IDs/selectors in HTML files
+- Use Cypress Selector Playground in Test Runner
 
 ---
 **Happy Testing! 🚀 Created By Hafeez Ilias**
